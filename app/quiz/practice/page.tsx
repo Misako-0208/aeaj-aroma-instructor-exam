@@ -20,6 +20,10 @@ import { useSearchParams } from "next/navigation"
 import chapter1Questions from "@/data/chapter1-questions.json"
 import chapter2Questions from "@/data/chapter2-questions.json"
 import chapter3Questions from "@/data/chapter3-questions.json"
+import chapter4Questions from "@/data/chapter4-questions.json"
+import chapter5_1Questions from "@/data/chapter5-1-questions.json"
+import chapter5_2Questions from "@/data/chapter5-2-questions.json"
+import chapter5_3Questions from "@/data/chapter5-3-questions.json"
 
 interface Question {
   id: string
@@ -34,42 +38,27 @@ interface Question {
 
 // 全カテゴリーの問題データを統合
 const allQuestions: Question[] = [
-  // Chapter 1: アロマテラピーの源流を知る
+  // Chapter 1: アロマテラピーの源流を知る（15問）
   ...(chapter1Questions as Question[]),
 
-  // Chapter 2: 植物を知る
+  // Chapter 2: 植物を知る（15問）
   ...(chapter2Questions as Question[]),
 
-  // Chapter 3: 精油を知る
+  // Chapter 3: 精油を知る（15問）
   ...(chapter3Questions as Question[]),
 
-  // Chapter 4: 人体を知る（既存の問題）
-  {
-    id: "ch4_q001",
-    category: "人体を知る",
-    difficulty: "basic" as const,
-    question: "嗅覚情報が最初に到達する脳の部位はどこか？",
-    options: ["大脳皮質", "嗅球", "視床下部", "海馬"],
-    correctAnswer: 1,
-    explanation:
-      "嗅覚情報は鼻腔の嗅上皮から嗅神経を通じて、まず嗅球に到達します。嗅球は大脳の前端部にある構造で、ここで嗅覚情報の一次処理が行われた後、大脳辺縁系に送られます。",
-    tags: ["嗅覚", "嗅球", "嗅神経"],
-  },
+  // Chapter 4: 人体を知る（10問）
+  ...(chapter4Questions as Question[]),
 
-  // Chapter 5: 精油を使う-不調とアロマテラピー（既存の問題）
-  {
-    id: "ch5_q001",
-    category: "精油を使う-不調とアロマテラピー",
-    difficulty: "basic" as const,
-    question: "ストレス軽減に最も適している精油の特性はどれか？",
-    options: ["刺激作用", "鎮静作用", "収斂作用", "去痰作用"],
-    correctAnswer: 1,
-    explanation:
-      "ストレス軽減には鎮静作用のある精油が最も適しています。ラベンダー、カモミール、ベルガモットなどの鎮静作用により、副交感神経が優位になり、心身のリラックス状態をもたらします。",
-    tags: ["ストレス軽減", "鎮静作用", "副交感神経"],
-  },
+  // Chapter 5: 精油を使う-不調とアロマテラピー（32問）
+  // 5-1: 自律神経と呼吸（12問）
+  ...(chapter5_1Questions as Question[]),
+  // 5-2: ホルモンバランス・女性の不調（11問）
+  ...(chapter5_2Questions as Question[]),
+  // 5-3: 皮膚の構造と働き（9問）
+  ...(chapter5_3Questions as Question[]),
 
-  // Chapter 6: 精油を使う-痛みとアロマテラピー（既存の問題）
+  // Chapter 6: 精油を使う-痛みとアロマテラピー（サンプル1問）
   {
     id: "ch6_q001",
     category: "精油を使う-痛みとアロマテラピー",
@@ -77,57 +66,41 @@ const allQuestions: Question[] = [
     question: "筋肉の緊張による痛みに対して最も適した精油の作用はどれか？",
     options: ["収斂作用", "抗炎症作用", "筋弛緩作用", "利尿作用"],
     correctAnswer: 2,
-    explanation:
-      "筋肉の緊張による痛みには筋弛緩作用のある精油が最も適しています。ラベンダー、マジョラム、ローズマリーなどに含まれる成分が筋肉の緊張を和らげ、痛みの軽減に役立ちます。",
+    explanation: "筋肉の緊張による痛みには筋弛緩作用のある精油が最も適しています。ラベンダー、マジョラム、ローズマリーなどに含まれる成分が筋肉の緊張を和らげ、痛みの軽減に役立ちます。",
     tags: ["筋肉痛", "筋弛緩作用", "緊張"],
   },
 
-  // Chapter 7: 健康の基本（既存の問題）
+  // Chapter 7: 健康の基本（サンプル1問）
   {
     id: "ch7_q001",
     category: "健康の基本",
     difficulty: "basic" as const,
     question: "健康の基本となる3つの原則として正しい組み合わせはどれか？",
-    options: [
-      "食事・睡眠・運動",
-      "食事・睡眠・入浴", 
-      "睡眠・運動・ストレス発散",
-      "食事・運動・人間関係"
-    ],
+    options: ["食事・睡眠・運動", "食事・睡眠・入浴", "睡眠・運動・ストレス発散", "食事・運動・人間関係"],
     correctAnswer: 0,
     explanation: "健康の基本となる3つの原則は「食事・睡眠・運動」です。これらのバランスが取れることで心身の健康が維持され、アロマテラピーはこれらの質を高めるサポートを行うことができます。",
     tags: ["健康3原則", "食事", "睡眠", "運動"],
   },
 
-  // Chapter 8: ケーススタディ（既存の問題）
+  // Chapter 8: ケーススタディ（サンプル1問）
   {
     id: "ch8_q001",
     category: "ケーススタディ",
     difficulty: "intermediate" as const,
     question: "企業での健康経営推進におけるアロマテラピー活用で最も重要な点はなにか？",
-    options: [
-      "高価な精油を使用すること",
-      "従業員のニーズに合わせた安全な活用法",
-      "強い香りで職場環境を変えること",
-      "全員に同じ精油を使用すること"
-    ],
+    options: ["高価な精油を使用すること", "従業員のニーズに合わせた安全な活用法", "強い香りで職場環境を変えること", "全員に同じ精油を使用すること"],
     correctAnswer: 1,
     explanation: "企業での健康経営推進では、従業員一人ひとりのニーズや体調を考慮し、安全で効果的なアロマテラピーの活用法を提案することが最も重要です。個人差や好み、アレルギーの有無なども考慮する必要があります。",
     tags: ["健康経営", "企業", "安全性"],
   },
 
-  // Chapter 9: アロマテラピーインストラクターとして活動する（既存の問題）
+  // Chapter 9: アロマテラピーインストラクターとして活動する（サンプル1問）
   {
     id: "ch9_q001",
     category: "アロマテラピーインストラクターとして活動する",
     difficulty: "basic" as const,
     question: "アロマテラピーインストラクターに最も重要な資質はなにか？",
-    options: [
-      "豊富な精油コレクション",
-      "ホスピタリティとマナー",
-      "高度な化学知識",
-      "長年の実践経験"
-    ],
+    options: ["豊富な精油コレクション", "ホスピタリティとマナー", "高度な化学知識", "長年の実践経験"],
     correctAnswer: 1,
     explanation: "アロマテラピーインストラクターにとって最も重要なのは、相手に対する思いやりの心（ホスピタリティ）と適切なマナーです。知識や技術も大切ですが、まず人としての基本的な姿勢が信頼関係の構築につながります。",
     tags: ["インストラクター", "ホスピタリティ", "マナー"],
