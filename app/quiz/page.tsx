@@ -12,6 +12,10 @@ import { useSearchParams } from "next/navigation"
 import chapter1Questions from "@/data/chapter1-questions.json"
 import chapter2Questions from "@/data/chapter2-questions.json"
 import chapter3Questions from "@/data/chapter3-questions.json"
+import chapter4Questions from "@/data/chapter4-questions.json"
+import chapter5_1Questions from "@/data/chapter5-1-questions.json"
+import chapter5_2Questions from "@/data/chapter5-2-questions.json"
+import chapter5_3Questions from "@/data/chapter5-3-questions.json"
 
 interface Question {
   id: string
@@ -26,31 +30,27 @@ interface Question {
 
 // 全カテゴリーの問題データを統合
 const allQuestions: Question[] = [
+  // Chapter 1: アロマテラピーの源流を知る（15問）
   ...(chapter1Questions as Question[]),
+
+  // Chapter 2: 植物を知る（15問）
   ...(chapter2Questions as Question[]),
+
+  // Chapter 3: 精油を知る（15問）
   ...(chapter3Questions as Question[]),
-  
-  // その他のチャプターのサンプル問題
-  {
-    id: "ch4_q001",
-    category: "人体を知る",
-    difficulty: "basic" as const,
-    question: "嗅覚情報が最初に到達する脳の部位はどこか？",
-    options: ["大脳皮質", "嗅球", "視床下部", "海馬"],
-    correctAnswer: 1,
-    explanation: "嗅覚情報は鼻腔の嗅上皮から嗅神経を通じて、まず嗅球に到達します。",
-    tags: ["嗅覚", "嗅球", "嗅神経"],
-  },
-  {
-    id: "ch5_q001",
-    category: "精油を使う-不調とアロマテラピー",
-    difficulty: "basic" as const,
-    question: "ストレス軽減に最も適している精油の特性はどれか？",
-    options: ["刺激作用", "鎮静作用", "収斂作用", "去痰作用"],
-    correctAnswer: 1,
-    explanation: "ストレス軽減には鎮静作用のある精油が最も適しています。",
-    tags: ["ストレス軽減", "鎮静作用"],
-  },
+
+  // Chapter 4: 人体を知る（10問）
+  ...(chapter4Questions as Question[]),
+
+  // Chapter 5: 精油を使う-不調とアロマテラピー（32問）
+  // 5-1: 自律神経と呼吸（12問）
+  ...(chapter5_1Questions as Question[]),
+  // 5-2: ホルモンバランス・女性の不調（11問）
+  ...(chapter5_2Questions as Question[]),
+  // 5-3: 皮膚の構造と働き（9問）
+  ...(chapter5_3Questions as Question[]),
+
+  // Chapter 6-9: サンプル問題（各1問）
   {
     id: "ch6_q001",
     category: "精油を使う-痛みとアロマテラピー",
@@ -59,7 +59,7 @@ const allQuestions: Question[] = [
     options: ["収斂作用", "抗炎症作用", "筋弛緩作用", "利尿作用"],
     correctAnswer: 2,
     explanation: "筋肉の緊張による痛みには筋弛緩作用のある精油が最も適しています。",
-    tags: ["筋肉痛", "筋弛緩作用"],
+    tags: ["筋肉痛", "筋弛緩作用", "緊張"],
   },
   {
     id: "ch7_q001",
@@ -69,7 +69,7 @@ const allQuestions: Question[] = [
     options: ["食事・睡眠・運動", "食事・睡眠・入浴", "睡眠・運動・ストレス発散", "食事・運動・人間関係"],
     correctAnswer: 0,
     explanation: "健康の基本となる3つの原則は「食事・睡眠・運動」です。",
-    tags: ["健康3原則"],
+    tags: ["健康3原則", "食事", "睡眠", "運動"],
   },
   {
     id: "ch8_q001",
@@ -79,7 +79,7 @@ const allQuestions: Question[] = [
     options: ["高価な精油を使用すること", "従業員のニーズに合わせた安全な活用法", "強い香りで職場環境を変えること", "全員に同じ精油を使用すること"],
     correctAnswer: 1,
     explanation: "企業での健康経営推進では、従業員のニーズに合わせた安全な活用法が最も重要です。",
-    tags: ["健康経営"],
+    tags: ["健康経営", "企業", "安全性"],
   },
   {
     id: "ch9_q001",
@@ -89,7 +89,7 @@ const allQuestions: Question[] = [
     options: ["豊富な精油コレクション", "ホスピタリティとマナー", "高度な化学知識", "長年の実践経験"],
     correctAnswer: 1,
     explanation: "アロマテラピーインストラクターにとって最も重要なのは、ホスピタリティとマナーです。",
-    tags: ["インストラクター"],
+    tags: ["インストラクター", "ホスピタリティ", "マナー"],
   },
 ]
 
