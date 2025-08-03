@@ -20,7 +20,7 @@ const pwaConfig = withPWA({
   disable: process.env.NODE_ENV === 'development',
   
   // キャッシュバスティング用のバージョン管理
-  buildId: 'chapter4-5-update-' + Date.now(),
+  cacheId: 'chapter4-5-update-' + Date.now(),
   
   // ランタイムキャッシュ設定
   runtimeCaching: [
