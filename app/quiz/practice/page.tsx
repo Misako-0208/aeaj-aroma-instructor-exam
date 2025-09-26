@@ -24,6 +24,11 @@ import chapter4Questions from "@/data/chapter4-questions.json"
 import chapter5_1Questions from "@/data/chapter5-1-questions.json"
 import chapter5_2Questions from "@/data/chapter5-2-questions.json"
 import chapter5_3Questions from "@/data/chapter5-3-questions.json"
+import chapter6Questions from "@/data/chapter6-questions.json"
+import chapter7Questions from "@/data/chapter7-questions.json"
+import chapter8Questions from "@/data/chapter8-questions.json"
+import chapter9_1Questions from "@/data/chapter9-1-questions.json"
+import chapter9_2Questions from "@/data/chapter9-2-questions.json"
 
 interface Question {
   id: string
@@ -58,53 +63,20 @@ const allQuestions: Question[] = [
   // 5-3: 皮膚の構造と働き（9問）
   ...(chapter5_3Questions as Question[]),
 
-  // Chapter 6: 精油を使う-痛みとアロマテラピー（サンプル1問）
-  {
-    id: "ch6_q001",
-    category: "精油を使う-痛みとアロマテラピー",
-    difficulty: "basic" as const,
-    question: "筋肉の緊張による痛みに対して最も適した精油の作用はどれか？",
-    options: ["収斂作用", "抗炎症作用", "筋弛緩作用", "利尿作用"],
-    correctAnswer: 2,
-    explanation: "筋肉の緊張による痛みには筋弛緩作用のある精油が最も適しています。ラベンダー、マジョラム、ローズマリーなどに含まれる成分が筋肉の緊張を和らげ、痛みの軽減に役立ちます。",
-    tags: ["筋肉痛", "筋弛緩作用", "緊張"],
-  },
+  // Chapter 6: 精油を使う-痛みとアロマテラピー
+  ...(chapter6Questions as Question[]),
 
-  // Chapter 7: 健康の基本（サンプル1問）
-  {
-    id: "ch7_q001",
-    category: "健康の基本",
-    difficulty: "basic" as const,
-    question: "健康の基本となる3つの原則として正しい組み合わせはどれか？",
-    options: ["食事・睡眠・運動", "食事・睡眠・入浴", "睡眠・運動・ストレス発散", "食事・運動・人間関係"],
-    correctAnswer: 0,
-    explanation: "健康の基本となる3つの原則は「食事・睡眠・運動」です。これらのバランスが取れることで心身の健康が維持され、アロマテラピーはこれらの質を高めるサポートを行うことができます。",
-    tags: ["健康3原則", "食事", "睡眠", "運動"],
-  },
+  // Chapter 7: 健康の基本
+  ...(chapter7Questions as Question[]),
 
-  // Chapter 8: ケーススタディ（サンプル1問）
-  {
-    id: "ch8_q001",
-    category: "ケーススタディ",
-    difficulty: "intermediate" as const,
-    question: "企業での健康経営推進におけるアロマテラピー活用で最も重要な点はなにか？",
-    options: ["高価な精油を使用すること", "従業員のニーズに合わせた安全な活用法", "強い香りで職場環境を変えること", "全員に同じ精油を使用すること"],
-    correctAnswer: 1,
-    explanation: "企業での健康経営推進では、従業員一人ひとりのニーズや体調を考慮し、安全で効果的なアロマテラピーの活用法を提案することが最も重要です。個人差や好み、アレルギーの有無なども考慮する必要があります。",
-    tags: ["健康経営", "企業", "安全性"],
-  },
+  // Chapter 8: ケーススタディ
+  ...(chapter8Questions as Question[]),
 
-  // Chapter 9: アロマテラピーインストラクターとして活動する（サンプル1問）
-  {
-    id: "ch9_q001",
-    category: "アロマテラピーインストラクターとして活動する",
-    difficulty: "basic" as const,
-    question: "アロマテラピーインストラクターに最も重要な資質はなにか？",
-    options: ["豊富な精油コレクション", "ホスピタリティとマナー", "高度な化学知識", "長年の実践経験"],
-    correctAnswer: 1,
-    explanation: "アロマテラピーインストラクターにとって最も重要なのは、相手に対する思いやりの心（ホスピタリティ）と適切なマナーです。知識や技術も大切ですが、まず人としての基本的な姿勢が信頼関係の構築につながります。",
-    tags: ["インストラクター", "ホスピタリティ", "マナー"],
-  },
+  // Chapter 9: アロマテラピーインストラクターとして活動する
+  // 9-1: さまざまな分野で活動する・支持されるインストラクターになるために
+  ...(chapter9_1Questions as Question[]),
+  // 9-2: エビデンスと知識のアップデート
+  ...(chapter9_2Questions as Question[]),
 ]
 
 export default function PracticePage() {
